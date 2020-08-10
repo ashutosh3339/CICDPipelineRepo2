@@ -1,0 +1,23 @@
+service: cicddemo
+
+provider:
+  name: aws
+  runtime: python3.6
+
+# you can overwrite defaults here
+#  stage: dev
+  region: us-west-2
+
+functions:
+  crypto_test:
+    handler: handler.endpoint
+    name: cicddemolambda
+    role: arn:aws:iam::394013177213:role/lambda-service-role
+    layers:
+      - arn:aws:lambda:us-west-2:394013177213:layer:KiraLambdaLayer:4
+#plugins:
+#  - serverless-python-requirements
+#custom:
+#  pythonRequirements:
+#    dockerizePip: non-linux
+
